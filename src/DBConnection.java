@@ -9,13 +9,23 @@ public class DBConnection {
 		String user = "root";
 		String passwd = "";
 	    private Connection conn;
-
-	   
-	    public DBConnection() throws SQLException {
-			conn=DriverManager.getConnection(url, user,passwd);
-		}
-
+	    private static DBConnection db;
 	    
+	   
+	   private DBConnection() {
+			}
+	   
+	   public static DBConnection getInstance(){
+			if(db == null){
+				db = new DBConnection();
+				System.out.println("nouveau");
+			}else{
+				System.out.println("existe deja");
+
+			}
+			return db;
+		}
+		
 	    public Connection getConn() {
 			return conn;
 		}
