@@ -5,28 +5,43 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class UniversiteRepository {
+public class UniversiteRepository implements InterfaceUniversiteRepository {
 	
+	private InterfaceDBConnexion BDD ;
+	private Statement stmt ;
 	
-	Universite GetById(int universityId) throws SQLException {
+	public UniversiteRepository(InterfaceDBConnexion BDD){
+		this.BDD = BDD;
+	
+	}
+	
+@Override	
+public Universite GetById(int universityId){
 		
-		DBConnection BD=DBConnection.getInstance();
-		Connection connect=BD.getConn(); 
-		Statement stmt = connect.createStatement();
+	try{
+		stmt = BDD.getConn().createStatement();
+
 		System.out.println("LogBD : début recherche de id université dans la base de donnée");
-		
-		String sql = "select * from universite where id_universite="+ universityId;
-		ResultSet rs = stmt.executeQuery(sql);
-		rs.next();	
+	
+	String sql = "select * from universite where id_universite="+ universityId;
+	ResultSet rs = stmt.executeQuery(sql);
+	if(rs.next()){
 		TypePackage p=TypePackage.valueOf(rs.getString(3));
 		Universite u = new Universite (rs.getInt(1),rs.getString(2),p);
-			
 		System.out.println("LogBD : université récupérée");
-		
-		connect.close();
-		return u;	
+		BDD.getConn().close();
+		return u;
+	}
+	
 	
 		
-	}	
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
 	
+
+	return null;
 }
+		
+}
+
