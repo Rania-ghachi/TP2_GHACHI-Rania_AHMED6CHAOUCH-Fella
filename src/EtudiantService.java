@@ -5,19 +5,24 @@ import java.sql.Statement;
 import java.util.ArrayList;
 public class EtudiantService {
 	
+	
+	
+
+  private Ijournal j ;
   private InterfaceEtudiantRepository EtudRep;
   private InterfaceUniversiteRepository UnivRep;
 	
-  public EtudiantService(InterfaceEtudiantRepository EtudRep ,InterfaceUniversiteRepository UnivRep) {
+  public EtudiantService(InterfaceEtudiantRepository EtudRep ,InterfaceUniversiteRepository UnivRep, Ijournal j) {
 		super();
 		this.EtudRep = EtudRep;
 		this.UnivRep = UnivRep;
+		this.j = j; 
   }
   
-	boolean inscription (Etudiant etud , int ID_univ) throws SQLException	
+	boolean inscription (Etudiant etud , int ID_univ ) throws SQLException	
 	{
           Universite univ = UnivRep.GetById(ID_univ) ;
-	    System.out.println("Log: début de l'opération d'ajout de l'étudiant avec matricule "+etud.getMatricule());
+          j.outPut_Msg("Log: début de l'opération d'ajout de l'étudiant avec matricule "+etud.getMatricule());
 	    
 	    if(etud.getEmail() == null || etud.getEmail().length() == 0)
 	    {
@@ -46,7 +51,7 @@ public class EtudiantService {
 	     }                           
 	     
 		 EtudRep.add(etud);
-		 System.out.println("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+etud.getMatricule());
+		 j.outPut_Msg("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+etud.getMatricule());
 		 return true;
 	    
 		

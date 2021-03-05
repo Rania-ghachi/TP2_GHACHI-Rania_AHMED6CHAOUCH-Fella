@@ -8,9 +8,11 @@ import java.sql.Statement;
 	
 	private InterfaceDBConnexion BDD ;
 	private static Statement stmt;
+	private Ijournal j;
 
-	public EtudiantRepository(InterfaceDBConnexion BDD){
+	public EtudiantRepository(InterfaceDBConnexion BDD, Ijournal j){
 		this.BDD = BDD;
+		this.j = j ;
 		}
 		
 @Override
@@ -23,9 +25,9 @@ public void add(Etudiant E){
 		int rs = stmt.executeUpdate(sql);
 		
 		if (rs == 1){
-				System.out.println("log : ajout dans la BD réussi de l'étudiant  du Matricule" + E.getMatricule());
+			j.outPut_Msg("log : ajout dans la BD réussi de l'étudiant  du Matricule" + E.getMatricule());
 			}else if (rs == 0){
-				System.out.println("log : Echec de l'ajout dans la BD de l'étudiant  du Matricule" + E.getMatricule());
+				j.outPut_Msg("log : Echec de l'ajout dans la BD de l'étudiant  du Matricule" + E.getMatricule());
 			}
 		BDD.getConn().close();
 		
