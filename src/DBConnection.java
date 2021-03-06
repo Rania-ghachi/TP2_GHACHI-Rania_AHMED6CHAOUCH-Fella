@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 public class DBConnection implements InterfaceDBConnexion {
 	   
-		String BDD = "nomBD";
+		String BDD = "library_books";
 		String url = "jdbc:mysql://localhost:3306/" + BDD;
 		String user = "root";
 		String passwd = "";
