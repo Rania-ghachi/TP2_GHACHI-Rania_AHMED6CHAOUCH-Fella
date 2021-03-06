@@ -30,10 +30,13 @@ public Universite GetById(int universityId){
 	
 	String sql = "select * from universite where id_universite="+ universityId;
 	ResultSet rs = stmt.executeQuery(sql);
+	
 	if(rs.next()){
 		TypePackage p=TypePackage.valueOf(rs.getString(3));
 		Universite u = new Universite (rs.getInt(1),rs.getString(2),p);
+		
 		j.outPut_Msg("LogBD : université récupérée");
+		
 		BDD.getConn().close();
 		return u;
 	}
@@ -46,17 +49,21 @@ public Universite GetById(int universityId){
 	return null;
 }
 
+
 @Override
 public int NbrLivreAutorise(int id_univ) {
 	// TODO Auto-generated method stub
 	Universite Univ =  GetById(id_univ);
+	
 	if (Univ.getPack() == TypePackage.Standard)
      {
-         return 10;
+		Package pack = new Standard(null);
+        return pack.nbrLivreAutorise;
      }
      else if (Univ.getPack() == TypePackage.Premium)
      {
-    	 return 10*2;
+    	 Package pack = new Premuim(null);
+    	 return pack.nbrLivreAutorise;
     	 }     
 	
 	return 0;

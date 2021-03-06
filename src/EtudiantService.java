@@ -22,16 +22,8 @@ public class EtudiantService implements InterfaceEtudiantService {
 			    
 	    InterfaceUniversity univ = UnivRep.GetById(Et.getId_universite());
 		
-		if(univ.getPack() == TypePackage.Standard) {
-			
-			Et.bonus(5);
-		}
-					
-		else {
-				if(univ.getPack()== TypePackage.Premium) {
-					Et.bonus(10);
-					
-				}
+	    Package p = new Standard(null);
+		Et.bonus(p.getNbrLivreBonus());
 	 }
   
 	boolean inscription (Etudiant etud , int ID_univ ) throws SQLException	
