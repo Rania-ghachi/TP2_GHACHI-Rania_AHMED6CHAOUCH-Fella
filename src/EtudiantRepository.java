@@ -45,11 +45,11 @@ public void add(Etudiant E){
 		boolean rs = stmt.execute(sql);
 		
 		if (rs){
-			System.out.println("logBD--- :email existe dans la BD  " + email);
+			j.outPut_Msg("logBD--- :email existe dans la BD  " + email);
 			BDD.getConn().close();
 			return true;
 			}
-		System.out.println("logBD--- : email n'existe pas " + email);	
+		j.outPut_Msg("logBD--- : email n'existe pas " + email);	
 		BDD.getConn().close();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -68,11 +68,11 @@ public	boolean Exists(int mat)
 	boolean rs = stmt.execute(sql);
 	
 	if (rs){
-		System.out.println("logBD--- :etudiant avec ce matricule existe déja dans la BD  " + mat);
+		j.outPut_Msg("logBD--- :etudiant avec ce matricule existe déja dans la BD  " + mat);
 		BDD.getConn().close();
 		return true;
 		}
-	System.out.println("logBD----: etudiant avec ce matricule n'existe pas " + mat);	
+	j.outPut_Msg("logBD----: etudiant avec ce matricule n'existe pas " + mat);	
 	BDD.getConn().close();
 	
 	}catch(SQLException e){
