@@ -24,31 +24,14 @@ public class EtudiantService {
           Universite univ = UnivRep.GetById(ID_univ) ;
           j.outPut_Msg("Log: début de l'opération d'ajout de l'étudiant avec matricule "+etud.getMatricule());
 	    
-	    if(etud.getEmail() == null || etud.getEmail().length() == 0)
-	    {
-	    	return false;
-	    }
-	    
-	    if (EtudRep.Exists(etud.getMatricule()))
-	    {
-	        return false;
-	    }
-	    
-		if (EtudRep.Exists(etud.getEmail()))
-	    {
-	        return false;
-	    }
+          if(EtudRep.Existe_Email_Matricule(etud.getMatricule(), etud.getEmail())){
+  			return false;
+  		}
 		
 		
-		
-		 if (univ.getPack() == TypePackage.Standard)
-	     {
-			 etud.setNbLivreMensuel_Autorise(10);
-	     }
-	     else if (univ.getPack() == TypePackage.Premium)
-	     {
-	    	 etud.setNbLivreMensuel_Autorise(10*2);
-	     }                           
+          int nbrlivreAutorisé = UnivRep.NbrLivreAutorise(ID_univ);
+  		   etud.setNbLivreMensuel_Autorise(nbrlivreAutorisé);
+  		                                               
 	     
 		 EtudRep.add(etud);
 		 j.outPut_Msg("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+etud.getMatricule());

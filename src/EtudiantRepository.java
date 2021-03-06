@@ -80,4 +80,14 @@ public	boolean Exists(int mat)
 	}
 	return false;
 	}
+
+@Override
+public boolean Existe_Email_Matricule(int Matricule, String Email) {
+
+	return this.Exists(Matricule) || this.Exists(Email) || Email.length() == 0 || Email == null; 
+
+}
+
+
+
 }
