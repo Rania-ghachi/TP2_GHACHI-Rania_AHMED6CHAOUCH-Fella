@@ -33,4 +33,6 @@ public int getMatricule();
 	public String getPwd() ;
 
 	public void setPwd(String pwd);
+	
+	public void bonus(int nb );
 }
