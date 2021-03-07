@@ -23,7 +23,8 @@ public class Etudiant implements InterfaceEtudiant {
 			this.nbLivreEmprunte = nbLivreEmprunte ;
 
 		}
-		
+	
+
 		public void bonus(int nb){
 			
 			this.nbLivreMensuel_Autorise +=nb ;

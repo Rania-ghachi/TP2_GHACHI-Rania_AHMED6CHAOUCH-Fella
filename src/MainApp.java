@@ -12,6 +12,8 @@ public class MainApp {
 		
 		
 		Etudiant etudiant0 =new Etudiant(2, "Guendouziiiii", "wassila", "guen@gmail.com","xxxx",1, 0, 0);
+
+		ViewInscription v = new ViewInscription();
 		
 		Ijournal j1 = new AfficherEcran();
 		Ijournal j2 = new AfficherDate();
