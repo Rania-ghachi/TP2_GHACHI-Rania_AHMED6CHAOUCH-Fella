@@ -1,8 +1,12 @@
 
 public class Standard extends Package {
 	
-	public Standard(TypePackage nom_Tpack) {
-		super(nom_Tpack);
+	public Standard() {
+     	super(TypePackage.Standard);
+	}
+	
+	public Standard(TypePackage type_p) {
+		super(type_p);
 		// TODO Auto-generated constructor stub
 	}
 
