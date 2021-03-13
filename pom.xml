@@ -3,22 +3,40 @@
   <groupId>MasterISII</groupId>
   <artifactId>TP2Maven</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <dependencies>
   
-    <dependency>
+  <properties>
+    <spring.version>4.3.11.RELEASE</spring.version>
+  </properties>
+
+  <dependencyManagement>
+   <dependencies>
+          
+  
+     <dependency>
        <groupId>com.microsoft.sqlserver</groupId>
        <artifactId>mssql-jdbc</artifactId>
        <version>5.1.16.jar</version>
-    </dependency>
+     </dependency>
     
    
-    <dependency>
+     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.13.2</version>
-    </dependency>
+     </dependency>
     
+   
+          
+     <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-framework-bom</artifactId>
+          <version>${spring.version}</version>
+          <type>pom</type>
+          <scope>import</scope>
+     </dependency>
     </dependencies>
+   </dependencyManagement> 
+
   
   <build>
     <sourceDirectory>src</sourceDirectory>

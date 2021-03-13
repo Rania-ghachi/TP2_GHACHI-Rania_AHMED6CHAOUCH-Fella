@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+            
+<!--  Injection des dependances dans les classes Etudiant et Universite -->  
+  
+    <bean id="Etud" class="Etudiant">
+     <constructor-arg value="15555555558" type="int"></constructor-arg>
+     <constructor-arg value="Rania" type="String"></constructor-arg>
+     <constructor-arg value="ghachi" type="String"></constructor-arg>
+     <constructor-arg value="raniaghachi@gmail.com" type="String"></constructor-arg>
+     <constructor-arg value="0000" type="String"></constructor-arg>
+     <constructor-arg value="1754" type="int"></constructor-arg>
+     <constructor-arg value="12" type="int"></constructor-arg>
+     <constructor-arg value="1" type="int"></constructor-arg>
+    </bean>
+    
+   <bean id="Univ" class="Universite">
+     <constructor-arg value="1754" type="int"></constructor-arg>
+     <constructor-arg value="Alger1" type="String"></constructor-arg>
+     <constructor-arg value="Standard" type="String"></constructor-arg>
+   </bean>
+    
+   
+</beans>
